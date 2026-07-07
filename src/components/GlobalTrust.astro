@@ -1,0 +1,203 @@
+---
+// src/components/GlobalTrust.astro
+const projects = [
+    {
+        country: "Korea Selatan",
+        flag: "🇰🇷",
+        desc: "Luxury modular in Paju",
+        bgColor: "bg-korea",
+    },
+    {
+        country: "Pakistan",
+        flag: "🇵🇰",
+        desc: "170m² unit besar untuk hunian keluarga",
+        bgColor: "bg-pakistan",
+    },
+    {
+        country: "Nikaragua",
+        flag: "🇳🇮",
+        desc: "42m² hunian sosial cepat bangun",
+        bgColor: "bg-nikaragua",
+    },
+    {
+        country: "Kuba",
+        flag: "🇨🇺",
+        desc: "42m² house at an affordable price",
+        bgColor: "bg-kuba",
+    },
+];
+---
+
+<section class="global-section" id="global">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">GLOBAL TRUST</span>
+            <h2 class="section-title">
+                Terbukti di <span class="highlight">Seluruh Dunia</span>
+            </h2>
+            <p class="section-desc">
+                Keandalan teknologi modular ini telah terbukti secara global. Di
+                bawah lisensi G-Songuo, rumah modular telah sukses dibangun dan
+                berpenghuni di berbagai negara.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            {
+                projects.map((item) => (
+                    <div class={`project-card ${item.bgColor}`}>
+                        <div class="card-flag">{item.flag}</div>
+                        <div class="card-content">
+                            <h4>{item.country}</h4>
+                            <p>{item.desc}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="trust-badge">
+            <span>🏗️</span>
+            <strong>G-Songuo Composites Technology Co., Ltd</strong>
+            <span>— Teknologi Berlisensi Global</span>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .global-section {
+        background: #ffffff;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: #fef3c7;
+        color: #b45309;
+        padding: 0.3rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+    .section-title .highlight {
+        color: #d97706;
+    }
+    .section-desc {
+        color: #475569;
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    @media (min-width: 768px) {
+        .projects-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .project-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 1.5rem;
+        text-align: center;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        border: 1px solid #f1f5f9;
+        background: #f8fafc;
+    }
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .project-card.bg-korea {
+        border-top: 4px solid #dc2626;
+    }
+    .project-card.bg-pakistan {
+        border-top: 4px solid #16a34a;
+    }
+    .project-card.bg-nikaragua {
+        border-top: 4px solid #2563eb;
+    }
+    .project-card.bg-kuba {
+        border-top: 4px solid #d97706;
+    }
+
+    .card-flag {
+        font-size: 2.8rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .project-card h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.25rem 0;
+    }
+    .project-card p {
+        font-size: 0.85rem;
+        color: #475569;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .trust-badge {
+        text-align: center;
+        padding: 1.5rem;
+        background: #0f172a;
+        color: white;
+        border-radius: 2rem;
+        font-size: 0.95rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .trust-badge span {
+        color: #fbbf24;
+    }
+    .trust-badge strong {
+        color: white;
+        font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+        .projects-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .project-card {
+            padding: 1.2rem 0.8rem;
+        }
+        .card-flag {
+            font-size: 2rem;
+        }
+    }
+</style>

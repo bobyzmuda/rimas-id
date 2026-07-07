@@ -1,0 +1,345 @@
+---
+// src/components/Contact.astro
+---
+
+<section class="contact-section" id="kontak">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">HUBUNGI KAMI</span>
+            <h2 class="section-title">
+                Siap <span class="highlight">Membangun Bersama</span>?
+            </h2>
+            <p class="section-desc">
+                Tim ahli kami siap membantu konsultasi proyek Anda, baik untuk
+                perorangan, pengembang, maupun program pemerintah.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Kolom Kiri: Informasi -->
+            <div class="contact-info">
+                <div class="info-block">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h4>Kantor Pusat</h4>
+                        <p>
+                            Komplek Mall, Perum Ruko Mutiara Taman Palem Blok C8
+                            No. 8,<br />
+                            RT.7/RW.14, Jalan Outer Ring Road Kamal Raya,<br />
+                            Cengkareng Timur, West Jakarta City, Jakarta 11730
+                        </p>
+                        <a
+                            href="https://maps.google.com/?q=Komplek+Mall+Perum+Ruko+Mutiara+Taman+Palem+Blok+C8+No.+8+Jakarta"
+                            target="_blank"
+                            rel="noopener"
+                            class="map-link"
+                        >
+                            🗺️ Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>
+                            <a href="mailto:pt.songsongindonesiaemas@gmail.com"
+                                >pt.songsongindonesiaemas@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <h4>WhatsApp / Telepon</h4>
+                        <p>
+                            <a href="https://wa.me/6287774889922"
+                                >+62 877-7488-9922</a
+                            >
+                            <span class="contact-label">(Nadine)</span>
+                            <br />
+                            <a href="https://wa.me/6285280094852"
+                                >+62 852-8009-4852</a
+                            >
+                            <span class="contact-label">(Imam)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-icon">🌐</div>
+                    <div>
+                        <h4>Website</h4>
+                        <p>
+                            <a href="https://www.rimas.id" target="_blank"
+                                >www.rimas.id</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Formulir -->
+            <div class="contact-form-wrapper">
+                <form
+                    action="https://formsubmit.co/pt.songsongindonesiaemas@gmail.com"
+                    method="POST"
+                >
+                    <!-- Anti Spam (Opsional) -->
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="Pertanyaan dari Website RIMAS"
+                    />
+                    <input type="hidden" name="_template" value="table" />
+
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Nama Anda"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="email@anda.com"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor WhatsApp</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="08xx-xxxx-xxxx"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="message"
+                            >Pesan / Tipe Rumah yang Diminati</label
+                        >
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            placeholder="Saya tertarik dengan Tipe 36 untuk proyek perumahan..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button
+                    >
+                </form>
+                <p class="form-note">
+                    * Data Anda aman dan hanya digunakan untuk keperluan
+                    konsultasi.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .contact-section {
+        background: #f1f5f9;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: #dbeafe;
+        color: #1d4ed8;
+        padding: 0.3rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+    .section-title .highlight {
+        color: #d97706;
+    }
+    .section-desc {
+        color: #475569;
+        max-width: 650px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
+    }
+
+    /* Kolom Kiri */
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+    .info-block {
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1.2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        border: 1px solid #e2e8f0;
+    }
+    .info-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+        width: 3rem;
+    }
+    .info-block h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin: 0 0 0.25rem 0;
+    }
+    .info-block p {
+        margin: 0;
+        color: #0f172a;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .info-block a {
+        color: #d97706;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .info-block a:hover {
+        text-decoration: underline;
+    }
+    .contact-label {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 400;
+    }
+    .map-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Kolom Kanan */
+    .contact-form-wrapper {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid #e2e8f0;
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.3rem;
+    }
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1.2rem;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 0.8rem;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.2s;
+        background: #fafbfc;
+        box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #d97706;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+    }
+    .form-group textarea {
+        resize: vertical;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 0.9rem;
+        background: #0f172a;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition:
+            background 0.2s,
+            transform 0.1s;
+    }
+    .submit-btn:hover {
+        background: #d97706;
+    }
+    .submit-btn:active {
+        transform: scale(0.98);
+    }
+
+    .form-note {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+        .contact-form-wrapper {
+            padding: 1.5rem;
+        }
+        .info-block {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .info-icon {
+            width: auto;
+        }
+    }
+</style>

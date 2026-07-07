@@ -1,0 +1,293 @@
+---
+// src/components/Comparison.astro
+
+const rows = [
+    {
+        label: "Metode Konstruksi",
+        conventional: "Struktur bata tradisional atau beton bertulang (RC)",
+        rimas: "Rangka baja ringan + sistem panel modular",
+    },
+    {
+        label: "Waktu Konstruksi",
+        conventional: "30-80 hari",
+        rimas: "1 unit per hari (min. 100 unit) dengan 8 pekerja",
+    },
+    {
+        label: "Desain",
+        conventional: "Gaya atap datar sederhana, fasad standar",
+        rimas: "Pilihan atap pelana/shed dan 100 pilihan fasad",
+    },
+    {
+        label: "Keamanan Struktur",
+        conventional: "Risiko runtuh akibat bata & atap semen",
+        rimas: "Struktur pabrik, stabilitas tinggi & tahan gempa 7.5 SR",
+    },
+    {
+        label: "Termal / Kedap Air",
+        conventional: "Rendah (risiko panas berlebih, bocor)",
+        rimas: "Panel komposit berinsulasi, isolasi & kedap air unggul",
+    },
+    {
+        label: "Ketergantungan Tenaga Kerja",
+        conventional: "Membutuhkan banyak pekerja terampil",
+        rimas: "Tenaga kerja minimal, bisa pakai pekerja tidak terampil",
+    },
+    {
+        label: "Kontrol Kualitas",
+        conventional: "Bervariasi tergantung lokasi & skill",
+        rimas: "Komponen standar pabrik (presisi tinggi)",
+    },
+    {
+        label: "Kemudahan Ekspansi",
+        conventional: "Sulit dikembangkan",
+        rimas: "Mudah dengan menambahkan modul",
+    },
+    {
+        label: "Efisiensi Biaya",
+        conventional: "Biaya awal rendah, perawatan jangka panjang tinggi",
+        rimas: "Hemat biaya, perawatan rendah, umur pakai panjang",
+    },
+    {
+        label: "Efisiensi Energi",
+        conventional: "Isolasi buruk, biaya AC tinggi",
+        rimas: "Insulasi canggih, hemat AC hingga 70%",
+    },
+    {
+        label: "Dampak Lingkungan",
+        conventional: "Banyak limbah & debu di lokasi",
+        rimas: "Zero Waste (pabrikasi & rakit di lokasi)",
+    },
+];
+---
+
+<section class="comparison-section" id="perbandingan">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">PERBANDINGAN</span>
+            <h2 class="section-title">
+                RIMAS vs <span class="highlight">Rumah Konvensional</span>
+            </h2>
+            <p class="section-desc">
+                Lihat sendiri perbedaan mendasar yang menjadikan RIMAS pilihan
+                cerdas untuk masa depan.
+            </p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Perumahan Konvensional</th>
+                        <th class="rimas-header">✅ RIMAS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        rows.map((row) => (
+                            <tr>
+                                <td class="label-cell">{row.label}</td>
+                                <td class="conventional-cell">
+                                    {row.conventional}
+                                </td>
+                                <td class="rimas-cell">{row.rimas}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="perspectives">
+            <div class="perspectives-grid">
+                <div class="perspective-card">
+                    <div class="card-icon">🏛️</div>
+                    <h4>Perspektif Pemerintah</h4>
+                    <p>
+                        Kecepatan pembangunan, standarisasi, dan daya tahan
+                        membuat RIMAS cocok untuk pengembangan perumahan massal
+                        dan jangka panjang.
+                    </p>
+                </div>
+                <div class="perspective-card highlight-card">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Perspektif Penghuni</h4>
+                    <p>
+                        Tingkat kepuasan tinggi berkat efisiensi energi,
+                        estetika, keamanan struktur, dan pemanfaatan ruang
+                        interior yang optimal.
+                    </p>
+                </div>
+                <div class="perspective-card">
+                    <div class="card-icon">💼</div>
+                    <h4>Perspektif Pengembang</h4>
+                    <p>
+                        Hemat biaya tenaga kerja dan kecepatan pembangunan (<strong
+                            >ready to sell</strong
+                        >), serta kualitas rumah yang meningkatkan kepuasan
+                        pembeli.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .comparison-section {
+        background: #f8fafc;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: #e0e7ff;
+        color: #4338ca;
+        padding: 0.3rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+    .section-title .highlight {
+        color: #d97706;
+    }
+    .section-desc {
+        color: #475569;
+        max-width: 650px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        border-radius: 1rem;
+        border: 1px solid #e2e8f0;
+        background: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 600px;
+    }
+    thead th {
+        padding: 1rem 1.2rem;
+        text-align: left;
+        background: #0f172a;
+        color: white;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    thead th.rimas-header {
+        background: #d97706;
+        color: #0f172a;
+    }
+    tbody td {
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: top;
+        line-height: 1.5;
+    }
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+    .label-cell {
+        font-weight: 700;
+        color: #0f172a;
+        background: #f8fafc;
+        white-space: nowrap;
+    }
+    .conventional-cell {
+        color: #475569;
+    }
+    .rimas-cell {
+        color: #166534;
+        font-weight: 500;
+        background: #f0fdf4;
+    }
+    tbody tr:hover .label-cell {
+        background: #f1f5f9;
+    }
+    tbody tr:hover .rimas-cell {
+        background: #dcfce7;
+    }
+
+    .perspectives {
+        margin-top: 3.5rem;
+    }
+    .perspectives-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+        .perspectives-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .perspective-card {
+        background: white;
+        padding: 2rem 1.8rem;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .perspective-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+    .perspective-card.highlight-card {
+        border-color: #d97706;
+        background: #fffbeb;
+    }
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    .perspective-card h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+    }
+    .perspective-card p {
+        font-size: 0.95rem;
+        color: #475569;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @media (max-width: 480px) {
+        .perspective-card {
+            padding: 1.5rem;
+        }
+    }
+</style>
