@@ -1,0 +1,130 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero" id="beranda">
+    <div class="hero-container">
+        <span class="badge">🏆 RIMAS - Rumah Instan Modular Indonesia Emas</span
+        >
+        <h1 class="hero-title">
+            Membangun Rumah Rakyat.<br />
+            <span class="highlight">Cepat</span> dan <span class="highlight"
+                >Tahan Lama</span
+            >.
+        </h1>
+        <p class="hero-desc">
+            Solusi hunian berteknologi global G-Songuo, siap huni dalam hitungan
+            hari. Tahan gempa 7.5 SR, Zero Waste, dan efisien energi.
+        </p>
+        <div class="hero-features">
+            <span>✅ Tahan Gempa 7.5 SR</span>
+            <span>✅ Zero Waste Konstruksi</span>
+            <span>✅ 1 Unit per Hari</span>
+        </div>
+        <div class="hero-actions">
+            <a href="#produk" class="btn-primary">Lihat Produk</a>
+            <a href="#kontak" class="btn-secondary">Konsultasi Gratis</a>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 4rem 2rem;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .hero-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .badge {
+        display: inline-block;
+        background: rgba(214, 158, 46, 0.2);
+        color: #fbbf24;
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(214, 158, 46, 0.3);
+    }
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: white;
+    }
+    .hero-title .highlight {
+        color: #fbbf24;
+        text-shadow: 0 0 20px rgba(214, 158, 46, 0.3);
+    }
+    .hero-desc {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: #cbd5e1;
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+    }
+    .hero-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem 2.5rem;
+        margin-bottom: 2.5rem;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+    }
+    .hero-features span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .btn-primary {
+        background: #fbbf24;
+        color: #0f172a;
+        padding: 0.8rem 2.5rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        text-decoration: none;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        box-shadow: 0 10px 25px -5px rgba(214, 158, 46, 0.4);
+    }
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px -5px rgba(214, 158, 46, 0.6);
+    }
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.8rem 2.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+</style>
