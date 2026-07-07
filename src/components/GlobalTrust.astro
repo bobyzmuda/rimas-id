@@ -3,40 +3,44 @@
 const projects = [
     {
         country: "Korea Selatan",
-        icon: "fa-solid fa-globe",
+        flag: "🇰🇷",
+        icon: "fa-solid fa-building",
         desc: "Luxury modular in Paju",
-        bgColor: "bg-korea",
+        imageSrc: "/assets/global-korea.png",
     },
     {
         country: "Pakistan",
-        icon: "fa-solid fa-globe",
+        flag: "🇵🇰",
+        icon: "fa-solid fa-house-user",
         desc: "170m² unit besar untuk hunian keluarga",
-        bgColor: "bg-pakistan",
+        imageSrc: "/assets/global-pakistan.png",
     },
     {
         country: "Nikaragua",
-        icon: "fa-solid fa-globe",
+        flag: "🇳🇮",
+        icon: "fa-solid fa-people-roof",
         desc: "42m² hunian sosial cepat bangun",
-        bgColor: "bg-nikaragua",
+        imageSrc: "/assets/global-nikaragua.png",
     },
     {
         country: "Kuba",
-        icon: "fa-solid fa-globe",
+        flag: "🇨🇺",
+        icon: "fa-solid fa-house-chimney-window",
         desc: "42m² house at an affordable price",
-        bgColor: "bg-kuba",
+        imageSrc: "/assets/global-kuba.png",
     },
 ];
 ---
 
-<section class="global-section" id="global">
+<section class="global-section section-padding" id="global">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">GLOBAL TRUST</span>
-            <h2 class="section-title">
-                Terbukti di <span class="highlight">Seluruh Dunia</span>
+        <div class="section-header reveal">
+            <span class="gt-tag">GLOBAL TRUST</span>
+            <h2 class="gt-title">
+                Terbukti di <span class="gt-highlight">Seluruh Dunia</span>
             </h2>
-            <div class="section-divider"></div>
-            <p class="section-desc">
+            <div class="gt-divider"></div>
+            <p class="gt-desc">
                 Keandalan teknologi modular ini telah terbukti secara global. Di
                 bawah lisensi G-Songuo, rumah modular telah sukses dibangun dan
                 berpenghuni di berbagai negara.
@@ -45,12 +49,19 @@ const projects = [
 
         <div class="projects-grid">
             {
-                projects.map((item) => (
-                    <div class={`project-card ${item.bgColor}`}>
-                        <div class="card-flag">
-                            <i class={item.icon} />
+                projects.map((item, i) => (
+                    <div class={`project-card reveal reveal-delay-${i + 1}`}>
+                        <div class="card-image">
+                            <img
+                                src={item.imageSrc}
+                                alt={item.country}
+                                loading="lazy"
+                            />
+                            <div class="card-overlay">
+                                <span class="country-flag">{item.flag}</span>
+                            </div>
                         </div>
-                        <div class="card-content">
+                        <div class="card-body">
                             <h4>{item.country}</h4>
                             <p>{item.desc}</p>
                         </div>
@@ -59,151 +70,215 @@ const projects = [
             }
         </div>
 
-        <div class="trust-badge">
-            <i class="fa-solid fa-building-circle-check"></i>
-            <strong>G-Songuo Composites Technology Co., Ltd</strong>
-            <span>— Teknologi Berlisensi Global</span>
+        <div class="trust-badge reveal">
+            <div class="trust-icon">
+                <i class="fa-solid fa-building-circle-check"></i>
+            </div>
+            <div class="trust-text">
+                <strong>G-Songuo Composites Technology Co., Ltd</strong>
+                <span>Teknologi Berlisensi Global</span>
+            </div>
         </div>
     </div>
 </section>
 
 <style>
     .global-section {
-        background-color: #ffffff;
+        background: var(--gradient-dark);
+        color: var(--c-text-white);
     }
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-    .section-header {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .section-tag {
+
+    /* Dark-section header */
+    .gt-tag {
         display: inline-block;
-        background: rgba(201, 154, 59, 0.15);
+        background: rgba(201, 154, 59, 0.12);
         color: var(--c-accent);
-        padding: 0.4rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
+        padding: 0.4rem 1.25rem;
+        border-radius: var(--radius-full);
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         margin-bottom: 0.75rem;
-    }
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        font-weight: 800;
-        color: var(--c-text-dark);
-        margin-bottom: 0;
-    }
-    .section-title .highlight {
-        color: var(--c-accent);
-    }
-    .section-desc {
-        color: var(--c-text-muted);
-        max-width: 700px;
-        margin: 0 auto;
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-    }
-    @media (min-width: 768px) {
-        .projects-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-    }
-
-    .project-card {
-        padding: 2rem 1.5rem;
-        border-radius: 1.5rem;
-        text-align: center;
-        transition:
-            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid #e9edf2;
-        background: var(--c-bg-light);
-    }
-    .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
-
-    .project-card.bg-korea {
-        border-top: 4px solid var(--c-accent);
-    }
-    .project-card.bg-pakistan {
-        border-top: 4px solid var(--c-accent);
-    }
-    .project-card.bg-nikaragua {
-        border-top: 4px solid var(--c-accent);
-    }
-    .project-card.bg-kuba {
-        border-top: 4px solid var(--c-accent);
-    }
-
-    .card-flag {
-        font-size: 2.5rem;
-        display: block;
-        margin-bottom: 0.8rem;
-        color: var(--c-text-dark);
-        opacity: 0.8;
-    }
-    .project-card h4 {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--c-text-dark);
-        margin: 0 0 0.5rem 0;
+        border: 1px solid rgba(201, 154, 59, 0.2);
         font-family: var(--font-heading);
     }
-    .project-card p {
-        font-size: 0.9rem;
-        color: var(--c-text-muted);
-        margin: 0;
-        line-height: 1.5;
+
+    .gt-title {
+        font-size: clamp(2rem, 4.5vw, 3rem);
+        font-weight: 800;
+        color: var(--c-text-white);
+        letter-spacing: -0.02em;
     }
 
-    .trust-badge {
-        text-align: center;
-        padding: 1.5rem;
-        background: var(--c-primary);
-        color: var(--c-text-white);
-        border-radius: 1rem;
-        font-size: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        box-shadow: 0 10px 25px rgba(10, 22, 40, 0.2);
+    .gt-highlight {
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
-    .trust-badge i {
-        color: var(--c-accent);
-        font-size: 1.25rem;
+
+    .gt-divider {
+        width: 56px;
+        height: 3px;
+        background: var(--gradient-gold);
+        margin: 0.75rem auto 1.25rem;
+        border-radius: var(--radius-full);
     }
-    .trust-badge span {
-        color: var(--c-accent);
+
+    .gt-desc {
+        color: rgba(255, 255, 255, 0.55);
+        max-width: 680px;
+        margin: 0.5rem auto 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
     }
-    .trust-badge strong {
-        color: var(--c-text-white);
-        font-weight: 700;
+
+    /* Grid */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 480px;
+        }
     }
 
     @media (max-width: 480px) {
         .projects-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
+            max-width: 360px;
+            margin: 0 auto 3rem;
         }
-        .project-card {
-            padding: 1.5rem 1rem;
+    }
+
+    .project-card {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition:
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.35s,
+            border-color 0.35s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(201, 154, 59, 0.3);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s;
+    }
+
+    .project-card:hover .card-image img {
+        transform: scale(1.08);
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent 40%, rgba(10, 22, 40, 0.7));
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 0.8rem;
+    }
+
+    .country-flag {
+        font-size: 1.8rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .card-body {
+        padding: 1.2rem 1rem;
+    }
+
+    .card-body h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--c-text-white);
+        margin-bottom: 0.3rem;
+        font-family: var(--font-heading);
+    }
+
+    .card-body p {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+    }
+
+    /* Trust badge */
+    .trust-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.5rem 2rem;
+        background: rgba(201, 154, 59, 0.08);
+        border: 1px solid rgba(201, 154, 59, 0.2);
+        border-radius: var(--radius-md);
+        flex-wrap: wrap;
+    }
+
+    .trust-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: rgba(201, 154, 59, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c-accent);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .trust-text {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .trust-text strong {
+        color: var(--c-text-white);
+        font-weight: 700;
+        font-family: var(--font-heading);
+        font-size: 0.95rem;
+    }
+
+    .trust-text span {
+        color: var(--c-accent);
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+        .trust-badge {
+            flex-direction: column;
+            text-align: center;
         }
-        .card-flag {
-            font-size: 2rem;
+        .trust-text {
+            text-align: center;
         }
     }
 </style>

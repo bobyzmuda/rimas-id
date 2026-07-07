@@ -1,6 +1,5 @@
 ---
 // src/components/Comparison.astro
-
 const rows = [
     {
         label: "Metode Konstruksi",
@@ -58,11 +57,32 @@ const rows = [
         rimas: "Zero Waste (pabrikasi & rakit di lokasi)",
     },
 ];
+
+const perspectives = [
+    {
+        icon: "fa-solid fa-building-columns",
+        title: "Perspektif Pemerintah",
+        desc: "Kecepatan pembangunan, standarisasi, dan daya tahan membuat RIMAS cocok untuk pengembangan perumahan massal dan jangka panjang.",
+        highlight: false,
+    },
+    {
+        icon: "fa-solid fa-users",
+        title: "Perspektif Penghuni",
+        desc: "Tingkat kepuasan tinggi berkat efisiensi energi, estetika, keamanan struktur, dan pemanfaatan ruang interior yang optimal.",
+        highlight: true,
+    },
+    {
+        icon: "fa-solid fa-briefcase",
+        title: "Perspektif Pengembang",
+        desc: "Hemat biaya tenaga kerja dan kecepatan pembangunan (ready to sell), serta kualitas rumah yang meningkatkan kepuasan pembeli.",
+        highlight: false,
+    },
+];
 ---
 
-<section class="comparison-section" id="perbandingan">
+<section class="comparison-section section-padding" id="perbandingan">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">PERBANDINGAN</span>
             <h2 class="section-title">
                 RIMAS vs <span class="highlight">Rumah Konvensional</span>
@@ -74,15 +94,15 @@ const rows = [
             </p>
         </div>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper reveal">
             <table>
                 <thead>
                     <tr>
                         <th>Aspek</th>
                         <th>Perumahan Konvensional</th>
-                        <th class="rimas-header"
-                            ><i class="fa-solid fa-check"></i> RIMAS</th
-                        >
+                        <th class="rimas-header">
+                            <i class="fa-solid fa-check-double"></i> RIMAS
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,9 +111,13 @@ const rows = [
                             <tr>
                                 <td class="label-cell">{row.label}</td>
                                 <td class="conventional-cell">
+                                    <i class="fa-solid fa-xmark cell-icon-bad" />
                                     {row.conventional}
                                 </td>
-                                <td class="rimas-cell">{row.rimas}</td>
+                                <td class="rimas-cell">
+                                    <i class="fa-solid fa-check cell-icon-good" />
+                                    {row.rimas}
+                                </td>
                             </tr>
                         ))
                     }
@@ -101,42 +125,23 @@ const rows = [
             </table>
         </div>
 
-        <div class="perspectives">
+        <div class="perspectives reveal">
             <div class="perspectives-grid">
-                <div class="perspective-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <h4>Perspektif Pemerintah</h4>
-                    <p>
-                        Kecepatan pembangunan, standarisasi, dan daya tahan
-                        membuat RIMAS cocok untuk pengembangan perumahan massal
-                        dan jangka panjang.
-                    </p>
-                </div>
-                <div class="perspective-card highlight-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <h4>Perspektif Penghuni</h4>
-                    <p>
-                        Tingkat kepuasan tinggi berkat efisiensi energi,
-                        estetika, keamanan struktur, dan pemanfaatan ruang
-                        interior yang optimal.
-                    </p>
-                </div>
-                <div class="perspective-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </div>
-                    <h4>Perspektif Pengembang</h4>
-                    <p>
-                        Hemat biaya tenaga kerja dan kecepatan pembangunan (<strong
-                            >ready to sell</strong
-                        >), serta kualitas rumah yang meningkatkan kepuasan
-                        pembeli.
-                    </p>
-                </div>
+                {
+                    perspectives.map((item, i) => (
+                        <div
+                            class={`perspective-card reveal reveal-delay-${i + 1} ${item.highlight ? "highlight-card" : ""}`}
+                        >
+                            <div
+                                class={`p-icon ${item.highlight ? "p-icon-gold" : ""}`}
+                            >
+                                <i class={item.icon} />
+                            </div>
+                            <h4>{item.title}</h4>
+                            <p>{item.desc}</p>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
@@ -144,162 +149,180 @@ const rows = [
 
 <style>
     .comparison-section {
-        background-color: var(--c-bg-light);
-    }
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-    .section-header {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .section-tag {
-        display: inline-block;
-        background: rgba(201, 154, 59, 0.15);
-        color: var(--c-accent);
-        padding: 0.4rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-    }
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        font-weight: 800;
-        color: var(--c-text-dark);
-        margin-bottom: 0;
-    }
-    .section-title .highlight {
-        color: var(--c-accent);
-    }
-    .section-desc {
-        color: var(--c-text-muted);
-        max-width: 650px;
-        margin: 0 auto;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        background-color: var(--c-surface);
     }
 
+    /* Table */
     .table-wrapper {
         overflow-x: auto;
-        border-radius: 1.5rem;
-        border: 1px solid #e2e8f0;
-        background: #ffffff;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--c-border);
+        background: var(--c-surface);
+        box-shadow: var(--shadow-md);
     }
+
     table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.95rem;
-        min-width: 600px;
+        font-size: 0.9rem;
+        min-width: 650px;
     }
+
     thead th {
-        padding: 1.2rem 1.5rem;
+        padding: 1.1rem 1.5rem;
         text-align: left;
         background: var(--c-primary);
         color: var(--c-text-white);
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.04em;
         font-family: var(--font-heading);
     }
+
     thead th.rimas-header {
         background: var(--c-accent);
         color: var(--c-primary);
     }
+
+    thead th.rimas-header i {
+        margin-right: 0.3rem;
+    }
+
     tbody td {
-        padding: 1rem 1.5rem;
-        border-bottom: 1px solid #f1f5f9;
+        padding: 0.85rem 1.5rem;
+        border-bottom: 1px solid var(--c-border-light);
         vertical-align: top;
         line-height: 1.5;
     }
+
     tbody tr:last-child td {
         border-bottom: none;
     }
+
+    tbody tr {
+        transition: background 0.2s;
+    }
+
+    tbody tr:hover {
+        background: rgba(201, 154, 59, 0.03);
+    }
+
     .label-cell {
         font-weight: 700;
         color: var(--c-text-dark);
-        background: #f8fafc;
+        background: #fbfcfe;
         white-space: nowrap;
+        font-size: 0.88rem;
     }
+
     .conventional-cell {
         color: var(--c-text-muted);
     }
+
     .rimas-cell {
-        color: #166534;
+        color: #15803d;
         font-weight: 600;
-        background: #f0fdf4;
-    }
-    tbody tr:hover .label-cell {
-        background: #f1f5f9;
-    }
-    tbody tr:hover .rimas-cell {
-        background: #dcfce7;
+        background: rgba(34, 197, 94, 0.04);
     }
 
+    .cell-icon-bad {
+        color: #ef4444;
+        margin-right: 0.5rem;
+        font-size: 0.7rem;
+        opacity: 0.7;
+    }
+
+    .cell-icon-good {
+        color: #22c55e;
+        margin-right: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    /* Perspectives */
     .perspectives {
         margin-top: 4rem;
     }
+
     .perspectives-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
-    @media (min-width: 768px) {
+
+    @media (max-width: 768px) {
         .perspectives-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin: 0 auto;
         }
     }
+
     .perspective-card {
-        background: #ffffff;
+        background: var(--c-bg-light);
         padding: 2.5rem 2rem;
-        border-radius: 1.5rem;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--c-border);
         transition:
-            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.35s;
     }
+
     .perspective-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-lg);
     }
+
     .perspective-card.highlight-card {
         border-color: var(--c-accent);
-        background: #ffffff;
-        box-shadow: 0 10px 30px rgba(201, 154, 59, 0.15);
+        background: var(--c-surface);
+        box-shadow: 0 8px 30px rgba(201, 154, 59, 0.1);
     }
-    .perspective-card.highlight-card h4,
-    .perspective-card.highlight-card .card-icon {
+
+    .p-icon {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: var(--radius-sm);
+        background: rgba(10, 22, 40, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: var(--c-primary);
+        margin-bottom: 1.2rem;
+        transition: transform 0.3s;
+    }
+
+    .perspective-card:hover .p-icon {
+        transform: scale(1.1);
+    }
+
+    .p-icon-gold {
+        background: rgba(201, 154, 59, 0.12);
         color: var(--c-accent);
     }
-    .card-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: block;
-        color: var(--c-primary);
-    }
+
     .perspective-card h4 {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--c-text-dark);
         margin-bottom: 0.8rem;
         font-family: var(--font-heading);
     }
+
+    .highlight-card h4 {
+        color: var(--c-accent);
+    }
+
     .perspective-card p {
-        font-size: 1rem;
+        font-size: 0.92rem;
         color: var(--c-text-muted);
-        line-height: 1.6;
-        margin: 0;
+        line-height: 1.65;
     }
 
     @media (max-width: 480px) {
         .perspective-card {
-            padding: 1.5rem;
+            padding: 1.8rem 1.5rem;
         }
     }
 </style>

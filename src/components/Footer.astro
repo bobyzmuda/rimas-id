@@ -1,31 +1,36 @@
 ---
 // src/components/Footer.astro
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
+    <div class="footer-accent-line"></div>
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
                 <img
-                    src="https://placehold.co/150x50/334155/C99A3B?text=RIMAS"
+                    src="https://placehold.co/140x45/334155/C99A3B?text=RIMAS"
                     alt="RIMAS Logo"
                     class="footer-logo"
                 />
                 <p class="footer-desc">
-                    Rumah Instan Modular Indonesia Emas - Solusi hunian
+                    Rumah Instan Modular Indonesia Emas — Solusi hunian
                     berteknologi global G-Songuo, cepat bangun, tahan gempa, dan
                     efisien energi.
                 </p>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"
-                        ><i class="fa-brands fa-facebook-f"></i></a
-                    >
-                    <a href="#" aria-label="Instagram"
-                        ><i class="fa-brands fa-instagram"></i></a
-                    >
-                    <a href="#" aria-label="Youtube"
-                        ><i class="fa-brands fa-youtube"></i></a
-                    >
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
                 </div>
             </div>
             <div class="footer-links">
@@ -42,20 +47,24 @@
                 <h4>Hubungi Kami</h4>
                 <ul>
                     <li>
-                        <i class="fa-solid fa-location-dot"></i> Cengkareng Timur,
-                        Jakarta Barat
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Cengkareng Timur, Jakarta Barat</span>
                     </li>
-                    <li><i class="fa-solid fa-phone"></i> +62 877-7488-9922</li>
                     <li>
-                        <i class="fa-solid fa-envelope"></i> pt.songsongindonesiaemas@gmail.com
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+62 877-7488-9922</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>pt.songsongindonesiaemas@gmail.com</span>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>
-                &copy; {new Date().getFullYear()} Rumah Instan Modular Indonesia Emas
-                (RIMAS). All rights reserved.
+                &copy; {currentYear} Rumah Instan Modular Indonesia Emas (RIMAS).
+                All rights reserved.
             </p>
         </div>
     </div>
@@ -63,66 +72,97 @@
 
 <style>
     .footer {
-        background-color: var(--c-primary);
+        background: var(--c-primary);
         color: var(--c-text-muted);
-        padding: 5rem 1.5rem 2rem 1.5rem;
+        padding: 0 1.5rem 2rem;
+        position: relative;
     }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
+
+    .footer-accent-line {
+        height: 3px;
+        background: var(--gradient-gold);
+        margin-bottom: 4rem;
     }
+
     .footer-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
-        margin-bottom: 4rem;
+        margin-bottom: 3.5rem;
     }
+
     @media (min-width: 768px) {
         .footer-grid {
             grid-template-columns: 2fr 1fr 1.5fr;
         }
     }
+
     .footer-brand {
-        max-width: 400px;
+        max-width: 380px;
     }
+
     .footer-logo {
         margin-bottom: 1.5rem;
-        border-radius: 0.5rem;
+        border-radius: 6px;
+        height: 40px;
     }
+
     .footer-desc {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.5);
     }
+
     .social-links {
         display: flex;
-        gap: 1rem;
+        gap: 0.8rem;
     }
+
     .social-links a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--c-text-white);
-        border-radius: 50%;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 2.4rem;
+        height: 2.4rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: var(--radius-sm);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-decoration: none;
+        font-size: 0.9rem;
     }
+
     .social-links a:hover {
         background: var(--c-accent);
         color: var(--c-primary);
         transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(201, 154, 59, 0.3);
     }
+
     .footer-links h4,
     .footer-contact h4 {
         color: var(--c-text-white);
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 700;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
         font-family: var(--font-heading);
+        position: relative;
+        padding-bottom: 0.6rem;
     }
+
+    .footer-links h4::after,
+    .footer-contact h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 24px;
+        height: 2px;
+        background: var(--c-accent);
+        border-radius: 2px;
+    }
+
     .footer-links ul,
     .footer-contact ul {
         list-style: none;
@@ -130,34 +170,44 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
     }
+
     .footer-links a {
-        color: var(--c-text-muted);
+        color: rgba(255, 255, 255, 0.5);
         text-decoration: none;
-        transition: color 0.2s;
-        font-size: 0.95rem;
+        transition:
+            color 0.2s,
+            padding-left 0.2s;
+        font-size: 0.88rem;
     }
+
     .footer-links a:hover {
         color: var(--c-accent);
+        padding-left: 4px;
     }
+
     .footer-contact li {
         display: flex;
-        gap: 1rem;
-        font-size: 0.95rem;
+        gap: 0.8rem;
+        font-size: 0.88rem;
         line-height: 1.5;
         align-items: flex-start;
+        color: rgba(255, 255, 255, 0.5);
     }
+
     .footer-contact i {
         color: var(--c-accent);
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         margin-top: 0.2rem;
+        flex-shrink: 0;
     }
+
     .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding-top: 1.5rem;
         text-align: center;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.35);
     }
 </style>

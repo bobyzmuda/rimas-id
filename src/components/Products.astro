@@ -12,10 +12,11 @@ const products = [
             "Lantai PVC + lis",
             "Sanitasi & kelistrikan siap pakai",
         ],
-        badge: "Strategi",
-        icon: "fa-solid fa-house",
+        badge: "BEST DEAL",
+        icon: "fa-solid fa-fire",
         desc: "Solusi cerdas untuk hunian kompak atau proyek perumahan massal.",
-        imageText: "Denah+Tipe+27",
+        imageSrc: "/assets/denah-27.png",
+        isHighlighted: true,
     },
     {
         id: "30",
@@ -31,7 +32,8 @@ const products = [
         badge: "Best Value",
         icon: "fa-solid fa-star",
         desc: "Pilihan paling seimbang antara harga dan kenyamanan.",
-        imageText: "Denah+Tipe+30",
+        imageSrc: "/assets/denah-30.png",
+        isHighlighted: false,
     },
     {
         id: "36",
@@ -45,18 +47,21 @@ const products = [
             "3 Kamar Tidur atau ruang fleksibel",
         ],
         badge: "Keluarga",
-        icon: "fa-solid fa-users",
+        icon: "fa-solid fa-house-chimney",
         desc: "Pilihan ideal untuk hunian tumbuh (expandable).",
-        imageText: "Denah+Tipe+36",
+        imageSrc: "/assets/denah-36.png",
+        isHighlighted: false,
     },
 ];
 ---
 
-<section class="products-section" id="produk">
+<section class="products-section section-padding" id="produk">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">PILIHAN HUNIAN</span>
-            <h2 class="section-title">Tipe Rumah Modular RIMAS</h2>
+            <h2 class="section-title">
+                Tipe Rumah Modular <span class="highlight">RIMAS</span>
+            </h2>
             <div class="section-divider"></div>
             <p class="section-desc">
                 Dari lahan 27m² hingga 36m², setiap jengkal ruang dioptimalkan
@@ -66,30 +71,48 @@ const products = [
 
         <div class="products-grid">
             {
-                products.map((product) => (
-                    <div class="product-card">
-                        <div class="card-badge">
-                            <i class={product.icon} /> {product.badge}
+                products.map((product, i) => (
+                    <div
+                        class={`product-card reveal reveal-delay-${i + 1} ${product.isHighlighted ? "highlighted" : ""}`}
+                    >
+                        {product.isHighlighted && (
+                            <div class="highlight-glow" />
+                        )}
+                        <div class="card-badge-wrap">
+                            <span
+                                class={`card-badge ${product.isHighlighted ? "badge-gold" : ""}`}
+                            >
+                                <i class={product.icon} /> {product.badge}
+                            </span>
                         </div>
-                        <img
-                            src={`https://placehold.co/600x400/E2E8F0/1E293B?text=${product.imageText}`}
-                            alt={`Denah Tipe ${product.id}`}
-                            class="product-image"
-                        />
+                        <div class="image-wrap">
+                            <img
+                                src={product.imageSrc}
+                                alt={`Denah Tipe ${product.id}`}
+                                class="product-image"
+                                loading="lazy"
+                            />
+                        </div>
                         <div class="card-content">
-                            <h3 class="product-type">Tipe {product.id}</h3>
-                            <p class="product-size">{product.size}</p>
-                            <p class="product-roof">{product.roof}</p>
+                            <div class="card-top">
+                                <h3 class="product-type">Tipe {product.id}</h3>
+                                <span class="product-size">
+                                    {product.size} &middot; {product.roof}
+                                </span>
+                            </div>
                             <div class="price-tag">{product.price}</div>
                             <ul class="product-features">
                                 {product.features.map((feature) => (
-                                    <li>{feature}</li>
+                                    <li>
+                                        <i class="fa-solid fa-check" />
+                                        <span>{feature}</span>
+                                    </li>
                                 ))}
                             </ul>
                             <p class="product-desc">{product.desc}</p>
                             <a href="#kontak" class="card-cta">
                                 Tanya & Pesan{" "}
-                                <i class="fa-solid fa-arrow-right" />
+                                <i class="fa-solid fa-arrow-right cta-arrow" />
                             </a>
                         </div>
                     </div>
@@ -103,179 +126,235 @@ const products = [
     .products-section {
         background-color: var(--c-bg-light);
     }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .section-header {
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-    .section-tag {
-        display: inline-block;
-        background: rgba(201, 154, 59, 0.15);
-        color: var(--c-accent);
-        padding: 0.4rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-    }
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        font-weight: 800;
-        color: var(--c-text-dark);
-        margin-bottom: 0;
-    }
-    .section-desc {
-        color: var(--c-text-muted);
-        max-width: 600px;
-        margin: 0 auto;
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
+
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+        align-items: stretch;
     }
-    @media (min-width: 768px) {
+
+    @media (max-width: 1024px) {
         .products-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
     }
+
+    @media (max-width: 640px) {
+        .products-grid {
+            grid-template-columns: 1fr;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+    }
+
     .product-card {
-        background: #ffffff;
-        border-radius: 1.5rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        background: var(--c-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
         position: relative;
         transition:
-            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
-        border: 1px solid #e9edf2;
+        border: 1px solid var(--c-border);
         overflow: hidden;
     }
+
     .product-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        border-color: var(--c-accent);
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
     }
-    .card-badge {
+
+    /* Highlighted card */
+    .product-card.highlighted {
+        border: 2px solid var(--c-accent);
+        position: relative;
+    }
+
+    .highlight-glow {
+        position: absolute;
+        inset: -1px;
+        border-radius: var(--radius-lg);
+        background: conic-gradient(
+            from 0deg,
+            var(--c-accent),
+            rgba(201, 154, 59, 0.1),
+            var(--c-accent)
+        );
+        z-index: -1;
+        animation: rotateGlow 4s linear infinite;
+        opacity: 0.4;
+        filter: blur(8px);
+    }
+
+    @keyframes rotateGlow {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .product-card.highlighted .card-badge {
+        background: var(--gradient-gold);
+        color: var(--c-primary);
+    }
+
+    .product-card.highlighted:hover {
+        box-shadow: 0 16px 48px rgba(201, 154, 59, 0.2);
+    }
+
+    /* Badge */
+    .card-badge-wrap {
         position: absolute;
         top: 1rem;
         right: 1rem;
+        z-index: 10;
+    }
+
+    .card-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
         background: var(--c-primary);
         color: var(--c-text-white);
         padding: 0.4rem 1rem;
-        border-radius: 99px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        z-index: 10;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius-full);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
+
+    /* Image */
+    .image-wrap {
+        overflow: hidden;
+    }
+
     .product-image {
         width: 100%;
-        height: 220px;
+        height: 210px;
         object-fit: cover;
-        border-bottom: 1px solid #e9edf2;
+        display: block;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    .product-card:hover .product-image {
+        transform: scale(1.06);
+    }
+
+    /* Content */
     .card-content {
-        padding: 2rem 1.8rem;
+        padding: 1.8rem;
         display: flex;
         flex-direction: column;
         flex: 1;
     }
+
+    .card-top {
+        margin-bottom: 1rem;
+    }
+
     .product-type {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--c-text-dark);
-        margin-bottom: 0.2rem;
-    }
-    .product-size {
-        font-size: 0.95rem;
-        color: var(--c-text-muted);
-        font-weight: 500;
-        margin-bottom: 0.4rem;
-    }
-    .product-roof {
-        font-size: 0.85rem;
-        color: #64748b;
-        margin-bottom: 1.2rem;
-        border-bottom: 1px dashed #e2e8f0;
-        padding-bottom: 1rem;
-    }
-    .price-tag {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: var(--c-text-dark);
+        margin-bottom: 0.25rem;
+    }
+
+    .product-size {
+        font-size: 0.85rem;
+        color: var(--c-text-muted);
+        font-weight: 500;
+    }
+
+    .price-tag {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         margin-bottom: 1.2rem;
         font-family: var(--font-heading);
     }
+
     .price-tag::before {
         content: "Mulai ";
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 500;
-        color: var(--c-text-muted);
+        -webkit-text-fill-color: var(--c-text-muted);
         font-family: var(--font-body);
     }
+
     .product-features {
         list-style: none;
         padding: 0;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.2rem 0;
         flex: 1;
     }
+
     .product-features li {
-        padding: 0.4rem 0;
-        color: #334155;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 0.8rem;
-    }
-    .product-features li::before {
-        font-family: "Font Awesome 6 Free";
-        font-weight: 900;
-        content: "\f00c";
-        color: var(--c-accent);
-        font-size: 1rem;
-        margin-top: 0.1rem;
-    }
-    .product-desc {
+        padding: 0.35rem 0;
+        color: var(--c-text-body);
         font-size: 0.9rem;
-        color: #64748b;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .product-features li i {
+        color: var(--c-accent);
+        font-size: 0.7rem;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(201, 154, 59, 0.1);
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .product-desc {
+        font-size: 0.85rem;
+        color: var(--c-text-muted);
         line-height: 1.5;
         margin-bottom: 1.5rem;
         font-style: italic;
     }
+
     .card-cta {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.6rem;
         background: var(--c-primary);
         color: var(--c-text-white);
         text-align: center;
-        padding: 0.8rem 1.5rem;
-        border-radius: 1rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: var(--radius-md);
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         text-decoration: none;
-        transition:
-            background 0.25s,
-            transform 0.2s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-top: auto;
     }
+
     .card-cta:hover {
         background: var(--c-accent);
         color: var(--c-primary);
-        transform: translateY(-2px);
+    }
+
+    .cta-arrow {
+        transition: transform 0.3s;
+    }
+
+    .card-cta:hover .cta-arrow {
+        transform: translateX(4px);
     }
 </style>

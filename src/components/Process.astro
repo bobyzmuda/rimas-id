@@ -28,15 +28,21 @@ const steps = [
     {
         day: "Hari ke-5",
         title: "Finishing",
-        icon: "fa-solid fa-sparkles",
-        desc: "Interior selesai, unit sudah berdiri sempurna dan siap huni.",
+        icon: "fa-solid fa-flag-checkered",
+        desc: "Interior selesai, unit berdiri sempurna dan siap huni.",
     },
+];
+
+const stats = [
+    { number: "1", label: "Unit per Hari", sub: "(min. 100 unit)" },
+    { number: "8", label: "Pekerja Terampil", sub: "" },
+    { number: "8", label: "Hari Total", sub: "(termasuk 3 hari pondasi)" },
 ];
 ---
 
-<section class="process-section" id="proses">
+<section class="process-section section-padding" id="proses">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">INSTANT ASSEMBLY</span>
             <h2 class="section-title">
                 Selesai dalam <span class="highlight">Hitungan Hari</span>
@@ -49,50 +55,91 @@ const steps = [
             </p>
         </div>
 
-        <div class="stats-highlight">
-            <div class="stat-item">
-                <span class="stat-number">1</span>
-                <span class="stat-label"
-                    >Unit per Hari <small>(min. 100 unit)</small></span
-                >
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">8</span>
-                <span class="stat-label">Pekerja Terampil</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">8</span>
-                <span class="stat-label"
-                    >Hari Total <small>(termasuk 3 hari pondasi)</small></span
-                >
-            </div>
-        </div>
-
-        <div class="timeline">
+        <div class="stats-highlight reveal">
             {
-                steps.map((step, index) => (
-                    <div class="timeline-step">
-                        <div class="step-icon">
-                            <i class={step.icon} />
-                        </div>
-                        <div class="step-content">
-                            <span class="step-day">{step.day}</span>
-                            <h4 class="step-title">{step.title}</h4>
-                            <p class="step-desc">{step.desc}</p>
-                        </div>
-                        {index < steps.length - 1 && (
-                            <div class="step-connector" />
-                        )}
+                stats.map((stat) => (
+                    <div class="stat-item">
+                        <span class="stat-number">{stat.number}</span>
+                        <span class="stat-label">
+                            {stat.label}
+                            {stat.sub && <small>{stat.sub}</small>}
+                        </span>
                     </div>
                 ))
             }
         </div>
 
-        <p class="process-note">
-            <i class="fa-solid fa-circle-info" style="color: var(--c-accent)"
-            ></i> *Rumah contoh dibangun dengan total waktu 8 hari. Hari 1 s.d 3 untuk
-            penyiapan pondasi. Dibangun oleh tim berjumlah 3 teknisi dan 3 helper.
-        </p>
+        <div class="timeline">
+            {
+                steps.map((step, index) => (
+                    <>
+                        <div class="timeline-step reveal">
+                            <div class="step-icon">
+                                <i class={step.icon} />
+                                <div class="step-pulse" />
+                            </div>
+                            <div class="step-content">
+                                <span class="step-day">{step.day}</span>
+                                <h4 class="step-title">{step.title}</h4>
+                                <p class="step-desc">{step.desc}</p>
+                            </div>
+                        </div>
+                        {index < steps.length - 1 && (
+                            <div class="step-connector" />
+                        )}
+                    </>
+                ))
+            }
+        </div>
+
+        <div class="process-note reveal">
+            <i class="fa-solid fa-circle-info"></i>
+            <span
+                >Rumah contoh dibangun dalam 8 hari total (3 hari pondasi + 5
+                hari perakitan). Tim: 3 teknisi dan 3 helper.</span
+            >
+        </div>
+
+        <div class="process-gallery reveal">
+            <h3 class="gallery-title">
+                <i class="fa-solid fa-images"></i> Dokumentasi Perakitan
+            </h3>
+            <div class="gallery-slider">
+                {
+                    [
+                        {
+                            src: "/assets/proses-1.png",
+                            label: "Pondasi & Rangka Awal",
+                        },
+                        {
+                            src: "/assets/proses-2.png",
+                            label: "Pemasangan Dinding",
+                        },
+                        {
+                            src: "/assets/proses-3.png",
+                            label: "Pemasangan Atap",
+                        },
+                        {
+                            src: "/assets/proses-4.png",
+                            label: "Pemasangan Pintu & Jendela",
+                        },
+                        {
+                            src: "/assets/proses-5.png",
+                            label: "Finishing & Siap Huni",
+                        },
+                    ].map((item) => (
+                        <div class="gallery-item">
+                            <img
+                                src={item.src}
+                                alt={item.label}
+                                loading="lazy"
+                            />
+                            <div class="gallery-item-label">{item.label}</div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
 </section>
 
@@ -100,78 +147,49 @@ const steps = [
     .process-section {
         background-color: var(--c-bg-light);
     }
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-    .section-header {
-        text-align: center;
-        margin-bottom: 2.5rem;
-    }
-    .section-tag {
-        display: inline-block;
-        background: rgba(201, 154, 59, 0.15);
-        color: var(--c-accent);
-        padding: 0.4rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-    }
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        font-weight: 800;
-        color: var(--c-text-dark);
-        margin-bottom: 0;
-    }
-    .section-title .highlight {
-        color: var(--c-accent);
-    }
-    .section-desc {
-        color: var(--c-text-muted);
-        max-width: 650px;
-        margin: 0 auto;
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
 
     /* Stats */
     .stats-highlight {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 2rem 4rem;
-        background: #ffffff;
-        border-radius: 1.5rem;
-        padding: 2.5rem 1.5rem;
+        gap: 2rem 5rem;
+        background: var(--c-surface);
+        border-radius: var(--radius-lg);
+        padding: 2.5rem 2rem;
         margin-bottom: 4rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e9edf2;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--c-border);
     }
+
     .stat-item {
         text-align: center;
     }
+
     .stat-number {
         display: block;
         font-size: 3.5rem;
         font-weight: 900;
-        color: var(--c-primary);
         line-height: 1;
         font-family: var(--font-heading);
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
+
     .stat-label {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: var(--c-text-dark);
         font-weight: 600;
         margin-top: 0.5rem;
         display: block;
     }
+
     .stat-label small {
         display: block;
         font-weight: 400;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         color: var(--c-text-muted);
         margin-top: 0.2rem;
     }
@@ -181,7 +199,6 @@ const steps = [
         display: flex;
         flex-direction: column;
         gap: 0;
-        position: relative;
         margin: 2rem 0;
     }
 
@@ -190,15 +207,19 @@ const steps = [
             flex-direction: row;
             justify-content: space-between;
             align-items: flex-start;
-            padding-top: 2rem;
+            padding-top: 1rem;
         }
         .step-connector {
             flex: 1;
-            height: 3px;
-            background: rgba(201, 154, 59, 0.2);
-            margin: 0 0.5rem;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                var(--c-accent),
+                rgba(201, 154, 59, 0.15)
+            );
+            margin: 0 0.25rem;
             align-self: flex-start;
-            margin-top: 2.5rem;
+            margin-top: 2.3rem;
         }
         .timeline-step {
             flex: 1;
@@ -216,64 +237,96 @@ const steps = [
         padding: 0 0.25rem;
         position: relative;
     }
+
     .step-icon {
-        font-size: 1.8rem;
-        background: #ffffff;
+        font-size: 1.5rem;
+        background: var(--c-surface);
         color: var(--c-primary);
-        width: 4.5rem;
-        height: 4.5rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 10px 25px -5px rgba(201, 154, 59, 0.2);
-        border: 3px solid var(--c-accent);
+        box-shadow: var(--shadow-md);
+        border: 2px solid var(--c-accent);
         margin-bottom: 1.2rem;
         z-index: 2;
         position: relative;
+        transition:
+            transform 0.3s,
+            box-shadow 0.3s;
+    }
+
+    .timeline-step:hover .step-icon {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-glow);
+    }
+
+    .step-pulse {
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid var(--c-accent);
+        opacity: 0;
+        animation: pulseRing 2.5s ease-out infinite;
+    }
+
+    @keyframes pulseRing {
+        0% {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
     }
 
     .step-day {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
         color: var(--c-text-white);
         background: var(--c-primary);
-        padding: 0.2rem 1rem;
-        border-radius: 99px;
+        padding: 0.2rem 0.8rem;
+        border-radius: var(--radius-full);
         display: inline-block;
         margin-bottom: 0.5rem;
     }
+
     .step-title {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 700;
         color: var(--c-text-dark);
         margin: 0.3rem 0;
     }
+
     .step-desc {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: var(--c-text-muted);
         line-height: 1.5;
-        max-width: 200px;
+        max-width: 180px;
         margin: 0 auto;
     }
+
     @media (max-width: 767px) {
         .timeline-step {
             flex-direction: row;
             align-items: flex-start;
             gap: 1.2rem;
             padding: 1rem 0;
-            border-bottom: 1px dashed #e2e8f0;
+            border-bottom: 1px solid var(--c-border-light);
             width: 100%;
         }
         .timeline-step:last-child {
             border-bottom: none;
         }
         .step-icon {
-            width: 3.5rem;
-            height: 3.5rem;
-            font-size: 1.5rem;
+            width: 3.2rem;
+            height: 3.2rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
             margin-bottom: 0;
         }
@@ -288,22 +341,135 @@ const steps = [
         .step-connector {
             display: none;
         }
-        .stats-highlight {
-            gap: 1rem 2rem;
-        }
     }
 
+    /* Note */
     .process-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         color: var(--c-text-muted);
-        margin-top: 3.5rem;
-        padding: 1.2rem;
-        background: white;
-        border-radius: 1rem;
-        border: 1px solid #e9edf2;
+        margin-top: 3rem;
+        padding: 1.2rem 1.5rem;
+        background: var(--c-surface);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--c-border);
         max-width: 750px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .process-note i {
+        color: var(--c-accent);
+        flex-shrink: 0;
+    }
+
+    /* Gallery */
+    .process-gallery {
+        margin-top: 4rem;
+        background: var(--c-surface);
+        padding: 2.5rem 1.5rem;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--c-border);
+    }
+
+    .gallery-title {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--c-text-dark);
+        font-family: var(--font-heading);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+    }
+
+    .gallery-title i {
+        color: var(--c-accent);
+    }
+
+    .gallery-slider {
+        display: flex;
+        gap: 1.25rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-slider::-webkit-scrollbar {
+        height: 4px;
+    }
+    .gallery-slider::-webkit-scrollbar-track {
+        background: var(--c-border-light);
+        border-radius: 10px;
+    }
+    .gallery-slider::-webkit-scrollbar-thumb {
+        background: var(--c-accent);
+        border-radius: 10px;
+    }
+
+    .gallery-item {
+        flex-shrink: 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        scroll-snap-align: center;
+        border: 1px solid var(--c-border);
+        transition:
+            transform 0.3s,
+            box-shadow 0.3s;
+        position: relative;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--c-accent);
+    }
+
+    .gallery-item-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1rem;
+        background: linear-gradient(transparent, rgba(10, 22, 40, 0.95));
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--c-text-white);
+        font-family: var(--font-heading);
+        transition: color 0.3s;
+    }
+
+    .gallery-item:hover .gallery-item-label {
+        color: var(--c-accent);
+    }
+
+    .gallery-item img {
+        width: 320px;
+        height: 230px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.06);
+    }
+
+    @media (max-width: 768px) {
+        .gallery-item img {
+            width: 260px;
+            height: 185px;
+        }
+        .stats-highlight {
+            gap: 1.5rem 2.5rem;
+        }
     }
 </style>

@@ -7,36 +7,41 @@ const advantages = [
         subtitle: "5-10x Lebih Kuat dari Baja Galvanis",
         description:
             "Teknologi baja pelat tercanggih dengan ketahanan korosi luar biasa. Kekakuan dinding dan lantai dirancang untuk bertahan lintas generasi.",
-        color: "gold",
+        accent: "#c99a3b",
+        accentRgb: "201, 154, 59",
     },
     {
-        icon: "fa-solid fa-helmet-safety",
+        icon: "fa-solid fa-house-crack",
         title: "Tahan Gempa 7.5 SR",
         subtitle: "Keamanan Struktural Maksimal",
         description:
             "Telah lulus uji simulasi Computer-Aided Engineering (CAE) ketat. Kokoh menahan angin kencang dan guncangan gempa terkuat.",
-        color: "blue",
+        accent: "#38bdf8",
+        accentRgb: "56, 189, 248",
     },
     {
-        icon: "fa-solid fa-snowflake",
+        icon: "fa-solid fa-temperature-low",
         title: "Insulasi Premium",
         subtitle: "Hemat Energi hingga 70%",
         description:
             "Busa poliuretan premium menghasilkan ruangan stabil: adem di siang hari, kedap suara, dan tahan api. Bebas overheat dan kebocoran.",
-        color: "green",
+        accent: "#34d399",
+        accentRgb: "52, 211, 153",
     },
 ];
 ---
 
-<section class="advantages-section" id="keunggulan">
+<section class="advantages-section section-padding" id="keunggulan">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">KEUNGGULAN RIMAS</span>
-            <h2 class="section-title">
-                Teknologi untuk <span class="highlight">Hunian Masa Depan</span>
+        <div class="section-header reveal">
+            <span class="adv-tag">KEUNGGULAN RIMAS</span>
+            <h2 class="adv-title">
+                Teknologi untuk <span class="adv-highlight"
+                    >Hunian Masa Depan</span
+                >
             </h2>
-            <div class="section-divider"></div>
-            <p class="section-desc">
+            <div class="adv-divider"></div>
+            <p class="adv-desc">
                 Dirancang dengan material canggih dan standar global untuk
                 kenyamanan lintas generasi.
             </p>
@@ -45,8 +50,11 @@ const advantages = [
         <div class="advantages-grid">
             {
                 advantages.map((item, index) => (
-                    <div class={`advantage-card ${item.color}`}>
-                        <div class="card-icon">
+                    <div
+                        class="advantage-card reveal reveal-delay-{index + 1}"
+                        style={`--card-accent: ${item.accent}; --card-accent-rgb: ${item.accentRgb};`}
+                    >
+                        <div class="card-icon-wrap">
                             <i class={item.icon} />
                         </div>
                         <h3 class="card-title">{item.title}</h3>
@@ -62,145 +70,172 @@ const advantages = [
 
 <style>
     .advantages-section {
-        background-color: var(--c-primary);
+        background: var(--gradient-dark);
         color: var(--c-text-white);
     }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .section-header {
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-    .section-tag {
+
+    /* Scoped section header for dark bg */
+    .adv-tag {
         display: inline-block;
-        background: rgba(201, 154, 59, 0.15);
+        background: rgba(201, 154, 59, 0.12);
         color: var(--c-accent);
-        padding: 0.4rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
+        padding: 0.4rem 1.25rem;
+        border-radius: var(--radius-full);
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         margin-bottom: 0.75rem;
         border: 1px solid rgba(201, 154, 59, 0.2);
+        font-family: var(--font-heading);
     }
-    .section-title {
-        font-size: clamp(2rem, 4vw, 2.8rem);
+
+    .adv-title {
+        font-size: clamp(2rem, 4.5vw, 3rem);
         font-weight: 800;
+        color: var(
+            --c-text-white
+        ) !important; /* Forces high-contrast white color */
         margin-bottom: 0;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
     }
-    .section-title .highlight {
-        color: var(--c-accent);
+
+    .adv-highlight {
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
-    .section-desc {
-        color: var(--c-text-muted);
-        max-width: 600px;
-        margin: 0 auto;
-        font-size: 1.1rem;
-        line-height: 1.6;
+
+    .adv-divider {
+        width: 56px;
+        height: 3px;
+        background: var(--gradient-gold);
+        margin: 0.75rem auto 1.25rem;
+        border-radius: var(--radius-full);
+    }
+
+    .adv-desc {
+        color: rgba(255, 255, 255, 0.55);
+        max-width: 620px;
+        margin: 0.5rem auto 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
     }
 
     .advantages-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
-    @media (min-width: 768px) {
+
+    @media (max-width: 768px) {
         .advantages-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin: 0 auto;
         }
     }
 
     .advantage-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border-radius: var(--radius-lg);
         padding: 2.5rem 2rem;
         position: relative;
         overflow: hidden;
         transition:
-            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.35s,
+            border-color 0.35s;
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
+
+    .advantage-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--card-accent),
+            transparent
+        );
+        opacity: 0;
+        transition: opacity 0.35s;
+    }
+
     .advantage-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transform: translateY(-8px);
+        border-color: rgba(var(--card-accent-rgb), 0.25);
+        box-shadow: 0 20px 50px rgba(var(--card-accent-rgb), 0.1);
     }
 
-    .advantage-card.gold:hover {
-        border-color: rgba(201, 154, 59, 0.3);
-        box-shadow: 0 20px 40px rgba(201, 154, 59, 0.1);
-    }
-    .advantage-card.blue:hover {
-        border-color: rgba(56, 189, 248, 0.3);
-        box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1);
-    }
-    .advantage-card.green:hover {
-        border-color: rgba(52, 211, 153, 0.3);
-        box-shadow: 0 20px 40px rgba(52, 211, 153, 0.1);
+    .advantage-card:hover::before {
+        opacity: 1;
     }
 
-    .card-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: inline-block;
-        color: var(--c-text-white);
-    }
-    .card-title {
+    .card-icon-wrap {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: var(--radius-sm);
+        background: rgba(var(--card-accent-rgb), 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
         font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 0.3rem;
-        color: var(--c-text-white);
-        font-family: var(--font-heading);
+        color: var(--card-accent);
+        transition:
+            background 0.3s,
+            transform 0.3s;
     }
+
+    .advantage-card:hover .card-icon-wrap {
+        background: rgba(var(--card-accent-rgb), 0.2);
+        transform: scale(1.08);
+    }
+
+    .card-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+        color: var(--c-text-white);
+    }
+
     .card-subtitle {
-        font-size: 0.95rem;
+        font-size: 0.88rem;
         font-weight: 600;
         margin-bottom: 1rem;
-    }
-    .advantage-card.gold .card-icon,
-    .advantage-card.gold .card-subtitle {
-        color: var(--c-accent);
-    }
-    .advantage-card.blue .card-icon,
-    .advantage-card.blue .card-subtitle {
-        color: #38bdf8;
-    }
-    .advantage-card.green .card-icon,
-    .advantage-card.green .card-subtitle {
-        color: #34d399;
+        color: var(--card-accent);
     }
 
     .card-desc {
-        color: #cbd5e1;
-        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.92rem;
         line-height: 1.7;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
+
     .card-number {
         position: absolute;
-        bottom: -0.5rem;
-        right: 1rem;
-        font-size: 5rem;
+        bottom: 0.8rem;
+        right: 1.2rem;
+        font-size: 4rem;
         font-weight: 900;
-        opacity: 0.05;
-        color: var(--c-text-white);
+        opacity: 0.04;
+        color: white;
         line-height: 1;
         font-family: var(--font-heading);
     }
 
     @media (max-width: 480px) {
         .advantage-card {
-            padding: 1.8rem 1.5rem;
-        }
-        .card-icon {
-            font-size: 2rem;
-        }
-        .card-title {
-            font-size: 1.2rem;
+            padding: 2rem 1.5rem;
         }
     }
 </style>
