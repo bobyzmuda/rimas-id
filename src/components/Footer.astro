@@ -1,0 +1,163 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img
+                    src="https://placehold.co/150x50/334155/C99A3B?text=RIMAS"
+                    alt="RIMAS Logo"
+                    class="footer-logo"
+                />
+                <p class="footer-desc">
+                    Rumah Instan Modular Indonesia Emas - Solusi hunian
+                    berteknologi global G-Songuo, cepat bangun, tahan gempa, dan
+                    efisien energi.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"
+                        ><i class="fa-brands fa-facebook-f"></i></a
+                    >
+                    <a href="#" aria-label="Instagram"
+                        ><i class="fa-brands fa-instagram"></i></a
+                    >
+                    <a href="#" aria-label="Youtube"
+                        ><i class="fa-brands fa-youtube"></i></a
+                    >
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#produk">Produk & Harga</a></li>
+                    <li><a href="#keunggulan">Keunggulan</a></li>
+                    <li><a href="#proses">Proses Instalasi</a></li>
+                    <li><a href="#perbandingan">Perbandingan</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Hubungi Kami</h4>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i> Cengkareng Timur,
+                        Jakarta Barat
+                    </li>
+                    <li><i class="fa-solid fa-phone"></i> +62 877-7488-9922</li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i> pt.songsongindonesiaemas@gmail.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                &copy; {new Date().getFullYear()} Rumah Instan Modular Indonesia Emas
+                (RIMAS). All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background-color: var(--c-primary);
+        color: var(--c-text-muted);
+        padding: 5rem 1.5rem 2rem 1.5rem;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+    @media (min-width: 768px) {
+        .footer-grid {
+            grid-template-columns: 2fr 1fr 1.5fr;
+        }
+    }
+    .footer-brand {
+        max-width: 400px;
+    }
+    .footer-logo {
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem;
+    }
+    .footer-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--c-text-white);
+        border-radius: 50%;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+    }
+    .social-links a:hover {
+        background: var(--c-accent);
+        color: var(--c-primary);
+        transform: translateY(-3px);
+    }
+    .footer-links h4,
+    .footer-contact h4 {
+        color: var(--c-text-white);
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: var(--font-heading);
+    }
+    .footer-links ul,
+    .footer-contact ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .footer-links a {
+        color: var(--c-text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+        font-size: 0.95rem;
+    }
+    .footer-links a:hover {
+        color: var(--c-accent);
+    }
+    .footer-contact li {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        align-items: flex-start;
+    }
+    .footer-contact i {
+        color: var(--c-accent);
+        font-size: 1.1rem;
+        margin-top: 0.2rem;
+    }
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+</style>

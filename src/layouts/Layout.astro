@@ -5,15 +5,102 @@ export interface Props {
 }
 const { title } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content="Rumah Instan Modular Indonesia Emas - Solusi hunian cepat, tahan gempa, dan ramah lingkungan." />
+    <meta
+      name="description"
+      content="Rumah Instan Modular Indonesia Emas - Solusi hunian cepat, tahan gempa, dan ramah lingkungan."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=Inter:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --c-primary: #0a1628;
+    --c-accent: #c99a3b;
+    --c-accent-hover: #e8c87a;
+    --c-bg-light: #f9f9fb;
+    --c-text-dark: #1e293b;
+    --c-text-white: #ffffff;
+    --c-text-muted: #94a3b8;
+    --font-heading: "DM Sans", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--c-text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--c-bg-light);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* Global utility: section dividers */
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--c-accent);
+    margin: 0.5rem auto 1.5rem;
+    border-radius: 99px;
+  }
+
+  /* Global utility: primary button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--c-accent);
+    color: var(
+      --c-text-dark
+    ); /* based on original yellow/black contrast, but wait... user said: aksen #C99A3B, we will use dark text for contrast or white? Gold #C99A3B with white might be hard to read, let's use white text as standard or dark. Actually, let's use dark text #0A1628 for gold buttons for premium feel */
+    color: var(--c-primary);
+    padding: 0.8rem 2.5rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px -5px rgba(201, 154, 59, 0.4);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px -5px rgba(201, 154, 59, 0.6);
+    background: var(--c-accent-hover);
+  }
+</style>

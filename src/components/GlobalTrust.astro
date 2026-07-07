@@ -3,25 +3,25 @@
 const projects = [
     {
         country: "Korea Selatan",
-        flag: "🇰🇷",
+        icon: "fa-solid fa-globe",
         desc: "Luxury modular in Paju",
         bgColor: "bg-korea",
     },
     {
         country: "Pakistan",
-        flag: "🇵🇰",
+        icon: "fa-solid fa-globe",
         desc: "170m² unit besar untuk hunian keluarga",
         bgColor: "bg-pakistan",
     },
     {
         country: "Nikaragua",
-        flag: "🇳🇮",
+        icon: "fa-solid fa-globe",
         desc: "42m² hunian sosial cepat bangun",
         bgColor: "bg-nikaragua",
     },
     {
         country: "Kuba",
-        flag: "🇨🇺",
+        icon: "fa-solid fa-globe",
         desc: "42m² house at an affordable price",
         bgColor: "bg-kuba",
     },
@@ -35,6 +35,7 @@ const projects = [
             <h2 class="section-title">
                 Terbukti di <span class="highlight">Seluruh Dunia</span>
             </h2>
+            <div class="section-divider"></div>
             <p class="section-desc">
                 Keandalan teknologi modular ini telah terbukti secara global. Di
                 bawah lisensi G-Songuo, rumah modular telah sukses dibangun dan
@@ -46,7 +47,9 @@ const projects = [
             {
                 projects.map((item) => (
                     <div class={`project-card ${item.bgColor}`}>
-                        <div class="card-flag">{item.flag}</div>
+                        <div class="card-flag">
+                            <i class={item.icon} />
+                        </div>
                         <div class="card-content">
                             <h4>{item.country}</h4>
                             <p>{item.desc}</p>
@@ -57,21 +60,16 @@ const projects = [
         </div>
 
         <div class="trust-badge">
-            <span>🏗️</span>
+            <i class="fa-solid fa-building-circle-check"></i>
             <strong>G-Songuo Composites Technology Co., Ltd</strong>
             <span>— Teknologi Berlisensi Global</span>
         </div>
     </div>
 </section>
 
-<style is:global>
+<style>
     .global-section {
-        background: #ffffff;
-        padding: 5rem 1.5rem;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
+        background-color: #ffffff;
     }
     .container {
         max-width: 1100px;
@@ -83,9 +81,9 @@ const projects = [
     }
     .section-tag {
         display: inline-block;
-        background: #fef3c7;
-        color: #b45309;
-        padding: 0.3rem 1.5rem;
+        background: rgba(201, 154, 59, 0.15);
+        color: var(--c-accent);
+        padding: 0.4rem 1.2rem;
         border-radius: 9999px;
         font-size: 0.75rem;
         font-weight: 700;
@@ -94,19 +92,19 @@ const projects = [
         margin-bottom: 0.75rem;
     }
     .section-title {
-        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-size: clamp(2rem, 4vw, 2.8rem);
         font-weight: 800;
-        color: #0f172a;
-        margin-bottom: 0.75rem;
+        color: var(--c-text-dark);
+        margin-bottom: 0;
     }
     .section-title .highlight {
-        color: #d97706;
+        color: var(--c-accent);
     }
     .section-desc {
-        color: #475569;
+        color: var(--c-text-muted);
         max-width: 700px;
         margin: 0 auto;
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         line-height: 1.6;
     }
 
@@ -123,69 +121,77 @@ const projects = [
     }
 
     .project-card {
-        padding: 1.8rem 1.2rem;
+        padding: 2rem 1.5rem;
         border-radius: 1.5rem;
         text-align: center;
         transition:
-            transform 0.2s,
-            box-shadow 0.2s;
-        border: 1px solid #f1f5f9;
-        background: #f8fafc;
+            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #e9edf2;
+        background: var(--c-bg-light);
     }
     .project-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
     .project-card.bg-korea {
-        border-top: 4px solid #dc2626;
+        border-top: 4px solid var(--c-accent);
     }
     .project-card.bg-pakistan {
-        border-top: 4px solid #16a34a;
+        border-top: 4px solid var(--c-accent);
     }
     .project-card.bg-nikaragua {
-        border-top: 4px solid #2563eb;
+        border-top: 4px solid var(--c-accent);
     }
     .project-card.bg-kuba {
-        border-top: 4px solid #d97706;
+        border-top: 4px solid var(--c-accent);
     }
 
     .card-flag {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+        color: var(--c-text-dark);
+        opacity: 0.8;
     }
     .project-card h4 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 700;
-        color: #0f172a;
-        margin: 0 0 0.25rem 0;
+        color: var(--c-text-dark);
+        margin: 0 0 0.5rem 0;
+        font-family: var(--font-heading);
     }
     .project-card p {
-        font-size: 0.85rem;
-        color: #475569;
+        font-size: 0.9rem;
+        color: var(--c-text-muted);
         margin: 0;
-        line-height: 1.4;
+        line-height: 1.5;
     }
 
     .trust-badge {
         text-align: center;
         padding: 1.5rem;
-        background: #0f172a;
-        color: white;
-        border-radius: 2rem;
-        font-size: 0.95rem;
+        background: var(--c-primary);
+        color: var(--c-text-white);
+        border-radius: 1rem;
+        font-size: 1rem;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        box-shadow: 0 10px 25px rgba(10, 22, 40, 0.2);
+    }
+    .trust-badge i {
+        color: var(--c-accent);
+        font-size: 1.25rem;
     }
     .trust-badge span {
-        color: #fbbf24;
+        color: var(--c-accent);
     }
     .trust-badge strong {
-        color: white;
+        color: var(--c-text-white);
         font-weight: 700;
     }
 
@@ -194,7 +200,7 @@ const projects = [
             grid-template-columns: 1fr 1fr;
         }
         .project-card {
-            padding: 1.2rem 0.8rem;
+            padding: 1.5rem 1rem;
         }
         .card-flag {
             font-size: 2rem;

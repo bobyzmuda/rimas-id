@@ -3,8 +3,11 @@
 ---
 
 <section class="hero" id="beranda">
+    <div class="hero-bg-overlay"></div>
     <div class="hero-container">
-        <span class="badge">🏆 RIMAS - Rumah Instan Modular Indonesia Emas</span
+        <span class="badge"
+            ><i class="fa-solid fa-trophy"></i> RIMAS - Rumah Instan Modular Indonesia
+            Emas</span
         >
         <h1 class="hero-title">
             Membangun Rumah Rakyat.<br />
@@ -17,9 +20,21 @@
             hari. Tahan gempa 7.5 SR, Zero Waste, dan efisien energi.
         </p>
         <div class="hero-features">
-            <span>✅ Tahan Gempa 7.5 SR</span>
-            <span>✅ Zero Waste Konstruksi</span>
-            <span>✅ 1 Unit per Hari</span>
+            <span
+                ><i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--c-accent)"></i> Tahan Gempa 7.5 SR</span
+            >
+            <span
+                ><i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--c-accent)"></i> Zero Waste Konstruksi</span
+            >
+            <span
+                ><i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--c-accent)"></i> 1 Unit per Hari</span
+            >
         </div>
         <div class="hero-actions">
             <a href="#produk" class="btn-primary">Lihat Produk</a>
@@ -28,51 +43,64 @@
     </div>
 </section>
 
-<style is:global>
+<style>
     .hero {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        padding: 4rem 2rem;
-        min-height: 80vh;
+        position: relative;
+        background-color: var(--c-primary);
+        background-image: url("https://placehold.co/1200x600/0A1628/1E293B?text=Hero+Background");
+        background-size: cover;
+        background-position: center;
+        padding: 6rem 1.5rem;
+        min-height: 85vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: var(--c-text-white);
         text-align: center;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
+        z-index: 1;
+    }
+    .hero-bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(10, 22, 40, 0.95) 0%,
+            rgba(30, 41, 59, 0.85) 100%
+        );
+        z-index: -1;
     }
     .hero-container {
         max-width: 900px;
         margin: 0 auto;
     }
     .badge {
-        display: inline-block;
-        background: rgba(214, 158, 46, 0.2);
-        color: #fbbf24;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(201, 154, 59, 0.15);
+        color: var(--c-accent);
         padding: 0.5rem 1.5rem;
-        border-radius: 9999px;
+        border-radius: 99px;
         font-size: 0.875rem;
         font-weight: 600;
         letter-spacing: 0.05em;
         margin-bottom: 1.5rem;
-        border: 1px solid rgba(214, 158, 46, 0.3);
+        border: 1px solid rgba(201, 154, 59, 0.3);
     }
     .hero-title {
         font-size: clamp(2.5rem, 8vw, 4.5rem);
         font-weight: 800;
         line-height: 1.1;
         margin-bottom: 1.5rem;
-        color: white;
+        color: var(--c-text-white);
     }
     .hero-title .highlight {
-        color: #fbbf24;
-        text-shadow: 0 0 20px rgba(214, 158, 46, 0.3);
+        color: var(--c-accent);
+        text-shadow: 0 0 20px rgba(201, 154, 59, 0.3);
     }
     .hero-desc {
         font-size: clamp(1rem, 2vw, 1.25rem);
-        color: #cbd5e1;
+        color: #e2e8f0;
         max-width: 650px;
         margin: 0 auto 2rem;
         line-height: 1.6;
@@ -84,7 +112,8 @@
         gap: 1.5rem 2.5rem;
         margin-bottom: 2.5rem;
         font-size: 0.95rem;
-        color: #e2e8f0;
+        color: #f1f5f9;
+        font-weight: 500;
     }
     .hero-features span {
         display: flex;
@@ -97,34 +126,22 @@
         justify-content: center;
         gap: 1rem;
     }
-    .btn-primary {
-        background: #fbbf24;
-        color: #0f172a;
-        padding: 0.8rem 2.5rem;
-        border-radius: 9999px;
-        font-weight: 700;
-        text-decoration: none;
-        transition:
-            transform 0.2s,
-            box-shadow 0.2s;
-        box-shadow: 0 10px 25px -5px rgba(214, 158, 46, 0.4);
-    }
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px -5px rgba(214, 158, 46, 0.6);
-    }
     .btn-secondary {
+        display: inline-block;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
+        color: var(--c-text-white);
         padding: 0.8rem 2.5rem;
-        border-radius: 9999px;
+        border-radius: 1rem;
         font-weight: 600;
         text-decoration: none;
-        transition: background 0.2s;
+        transition:
+            background 0.2s,
+            transform 0.2s;
     }
     .btn-secondary:hover {
         background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.03);
     }
 </style>

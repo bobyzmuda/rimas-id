@@ -67,6 +67,7 @@ const rows = [
             <h2 class="section-title">
                 RIMAS vs <span class="highlight">Rumah Konvensional</span>
             </h2>
+            <div class="section-divider"></div>
             <p class="section-desc">
                 Lihat sendiri perbedaan mendasar yang menjadikan RIMAS pilihan
                 cerdas untuk masa depan.
@@ -79,7 +80,9 @@ const rows = [
                     <tr>
                         <th>Aspek</th>
                         <th>Perumahan Konvensional</th>
-                        <th class="rimas-header">✅ RIMAS</th>
+                        <th class="rimas-header"
+                            ><i class="fa-solid fa-check"></i> RIMAS</th
+                        >
                     </tr>
                 </thead>
                 <tbody>
@@ -101,7 +104,9 @@ const rows = [
         <div class="perspectives">
             <div class="perspectives-grid">
                 <div class="perspective-card">
-                    <div class="card-icon">🏛️</div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
                     <h4>Perspektif Pemerintah</h4>
                     <p>
                         Kecepatan pembangunan, standarisasi, dan daya tahan
@@ -110,7 +115,9 @@ const rows = [
                     </p>
                 </div>
                 <div class="perspective-card highlight-card">
-                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
                     <h4>Perspektif Penghuni</h4>
                     <p>
                         Tingkat kepuasan tinggi berkat efisiensi energi,
@@ -119,7 +126,9 @@ const rows = [
                     </p>
                 </div>
                 <div class="perspective-card">
-                    <div class="card-icon">💼</div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
                     <h4>Perspektif Pengembang</h4>
                     <p>
                         Hemat biaya tenaga kerja dan kecepatan pembangunan (<strong
@@ -133,14 +142,9 @@ const rows = [
     </div>
 </section>
 
-<style is:global>
+<style>
     .comparison-section {
-        background: #f8fafc;
-        padding: 5rem 1.5rem;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
+        background-color: var(--c-bg-light);
     }
     .container {
         max-width: 1100px;
@@ -152,9 +156,9 @@ const rows = [
     }
     .section-tag {
         display: inline-block;
-        background: #e0e7ff;
-        color: #4338ca;
-        padding: 0.3rem 1.5rem;
+        background: rgba(201, 154, 59, 0.15);
+        color: var(--c-accent);
+        padding: 0.4rem 1.2rem;
         border-radius: 9999px;
         font-size: 0.75rem;
         font-weight: 700;
@@ -163,51 +167,52 @@ const rows = [
         margin-bottom: 0.75rem;
     }
     .section-title {
-        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-size: clamp(2rem, 4vw, 2.8rem);
         font-weight: 800;
-        color: #0f172a;
-        margin-bottom: 0.75rem;
+        color: var(--c-text-dark);
+        margin-bottom: 0;
     }
     .section-title .highlight {
-        color: #d97706;
+        color: var(--c-accent);
     }
     .section-desc {
-        color: #475569;
+        color: var(--c-text-muted);
         max-width: 650px;
         margin: 0 auto;
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         line-height: 1.6;
     }
 
     .table-wrapper {
         overflow-x: auto;
-        border-radius: 1rem;
+        border-radius: 1.5rem;
         border: 1px solid #e2e8f0;
-        background: white;
+        background: #ffffff;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
     table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         min-width: 600px;
     }
     thead th {
-        padding: 1rem 1.2rem;
+        padding: 1.2rem 1.5rem;
         text-align: left;
-        background: #0f172a;
-        color: white;
+        background: var(--c-primary);
+        color: var(--c-text-white);
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 0.03em;
+        font-family: var(--font-heading);
     }
     thead th.rimas-header {
-        background: #d97706;
-        color: #0f172a;
+        background: var(--c-accent);
+        color: var(--c-primary);
     }
     tbody td {
-        padding: 1rem 1.2rem;
+        padding: 1rem 1.5rem;
         border-bottom: 1px solid #f1f5f9;
         vertical-align: top;
         line-height: 1.5;
@@ -217,16 +222,16 @@ const rows = [
     }
     .label-cell {
         font-weight: 700;
-        color: #0f172a;
+        color: var(--c-text-dark);
         background: #f8fafc;
         white-space: nowrap;
     }
     .conventional-cell {
-        color: #475569;
+        color: var(--c-text-muted);
     }
     .rimas-cell {
         color: #166534;
-        font-weight: 500;
+        font-weight: 600;
         background: #f0fdf4;
     }
     tbody tr:hover .label-cell {
@@ -237,12 +242,12 @@ const rows = [
     }
 
     .perspectives {
-        margin-top: 3.5rem;
+        margin-top: 4rem;
     }
     .perspectives-grid {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
     }
     @media (min-width: 768px) {
         .perspectives-grid {
@@ -250,37 +255,44 @@ const rows = [
         }
     }
     .perspective-card {
-        background: white;
-        padding: 2rem 1.8rem;
+        background: #ffffff;
+        padding: 2.5rem 2rem;
         border-radius: 1.5rem;
         border: 1px solid #e2e8f0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         transition:
-            transform 0.2s,
-            box-shadow 0.2s;
+            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .perspective-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     }
     .perspective-card.highlight-card {
-        border-color: #d97706;
-        background: #fffbeb;
+        border-color: var(--c-accent);
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(201, 154, 59, 0.15);
+    }
+    .perspective-card.highlight-card h4,
+    .perspective-card.highlight-card .card-icon {
+        color: var(--c-accent);
     }
     .card-icon {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
         display: block;
+        color: var(--c-primary);
     }
     .perspective-card h4 {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
         font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
+        color: var(--c-text-dark);
+        margin-bottom: 0.8rem;
+        font-family: var(--font-heading);
     }
     .perspective-card p {
-        font-size: 0.95rem;
-        color: #475569;
+        font-size: 1rem;
+        color: var(--c-text-muted);
         line-height: 1.6;
         margin: 0;
     }

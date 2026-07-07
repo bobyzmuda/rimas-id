@@ -1,0 +1,97 @@
+---
+// src/components/Navbar.astro
+---
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#beranda" class="logo">RIMAS</a>
+        <div class="nav-links">
+            <a href="#produk">Produk</a>
+            <a href="#keunggulan">Keunggulan</a>
+            <a href="#proses">Proses</a>
+            <a href="#perbandingan">Perbandingan</a>
+            <a href="#kontak" class="nav-contact">Kontak</a>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(10, 22, 40, 0.85); /* #0A1628 with opacity */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 1rem 0;
+        font-family: var(--font-heading);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--c-text-white);
+        text-decoration: none;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        color: var(--c-text-white);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links a:hover {
+        color: var(--c-accent);
+    }
+
+    .nav-contact {
+        background: rgba(
+            201,
+            154,
+            59,
+            0.15
+        ); /* Accent color with low opacity */
+        color: var(--c-accent) !important; /* Force accent color on text */
+        padding: 0.4rem 1.2rem;
+        border-radius: 99px;
+        border: 1px solid rgba(201, 154, 59, 0.3);
+    }
+
+    .nav-contact:hover {
+        background: var(--c-accent);
+        color: var(--c-primary) !important;
+    }
+
+    /* Small screens wrap handling */
+    @media (max-width: 640px) {
+        .nav-container {
+            justify-content: center;
+        }
+        .nav-links {
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+</style>
