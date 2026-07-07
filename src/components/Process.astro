@@ -1,0 +1,321 @@
+---
+// src/components/Process.astro
+const steps = [
+    {
+        day: "H-3 s.d H-0",
+        title: "Persiapan Pondasi",
+        icon: "🚜",
+        desc: "Menyiapkan lahan dan fondasi sesuai spesifikasi modular.",
+    },
+    {
+        day: "Hari ke-1",
+        title: "Perakitan Rangka",
+        icon: "🏗️",
+        desc: "Rangka baja modular mulai berdiri kokoh.",
+    },
+    {
+        day: "Hari ke-2",
+        title: "Dinding & Lantai",
+        icon: "🧱",
+        desc: "Pemasangan dinding, lantai, hingga partisi ruangan.",
+    },
+    {
+        day: "Hari ke-3 & 4",
+        title: "Instalasi",
+        icon: "🔧",
+        desc: "Pemasangan pintu, jendela, instalasi air dan kelistrikan.",
+    },
+    {
+        day: "Hari ke-5",
+        title: "Finishing",
+        icon: "✨",
+        desc: "Interior selesai, unit sudah berdiri sempurna dan siap huni.",
+    },
+];
+---
+
+<section class="process-section" id="proses">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">INSTANT ASSEMBLY</span>
+            <h2 class="section-title">
+                Selesai dalam <span class="highlight">Hitungan Hari</span>
+            </h2>
+            <p class="section-desc">
+                Proyek pembangunan berlarut-larut bisa dihindari. Teknologi <strong
+                    >Speed Assembly</strong
+                > G-Songuo memungkinkan perakitan sangat cepat.
+            </p>
+        </div>
+
+        <div class="stats-highlight">
+            <div class="stat-item">
+                <span class="stat-number">1</span>
+                <span class="stat-label"
+                    >Unit per Hari <small>(min. 100 unit)</small></span
+                >
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Pekerja Terampil</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label"
+                    >Hari Total <small>(termasuk 3 hari pondasi)</small></span
+                >
+            </div>
+        </div>
+
+        <div class="timeline">
+            {
+                steps.map((step, index) => (
+                    <div class="timeline-step">
+                        <div class="step-icon">{step.icon}</div>
+                        <div class="step-content">
+                            <span class="step-day">{step.day}</span>
+                            <h4 class="step-title">{step.title}</h4>
+                            <p class="step-desc">{step.desc}</p>
+                        </div>
+                        {index < steps.length - 1 && (
+                            <div class="step-connector" />
+                        )}
+                    </div>
+                ))
+            }
+        </div>
+
+        <p class="process-note">
+            *Rumah contoh dibangun dengan total waktu 8 hari. Hari 1 s.d 3 untuk
+            penyiapan pondasi. Dibangun oleh tim berjumlah 3 teknisi dan 3
+            helper.
+        </p>
+    </div>
+</section>
+
+<style is:global>
+    .process-section {
+        background: #f8fafc;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: #dbeafe;
+        color: #1d4ed8;
+        padding: 0.3rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+    .section-title .highlight {
+        color: #d97706;
+    }
+    .section-desc {
+        color: #475569;
+        max-width: 650px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Stats */
+    .stats-highlight {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem 4rem;
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2rem 1.5rem;
+        margin-bottom: 3.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e9edf2;
+    }
+    .stat-item {
+        text-align: center;
+    }
+    .stat-number {
+        display: block;
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1;
+    }
+    .stat-label {
+        font-size: 0.9rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .stat-label small {
+        display: block;
+        font-weight: 400;
+        font-size: 0.7rem;
+        color: #94a3b8;
+    }
+
+    /* Timeline */
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+        margin: 2rem 0;
+    }
+
+    @media (min-width: 768px) {
+        .timeline {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-top: 2rem;
+        }
+        .step-connector {
+            flex: 1;
+            height: 3px;
+            background: #d1d5db;
+            margin: 0 0.5rem;
+            align-self: flex-start;
+            margin-top: 2.5rem;
+        }
+        .timeline-step {
+            flex: 1;
+            text-align: center;
+        }
+        .step-content {
+            text-align: center;
+        }
+    }
+
+    .timeline-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 0.25rem;
+        position: relative;
+    }
+    .step-icon {
+        font-size: 2.5rem;
+        background: white;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        border: 3px solid #f8fafc;
+        margin-bottom: 1rem;
+        z-index: 2;
+        position: relative;
+    }
+    .timeline-step:nth-child(1) .step-icon {
+        border-color: #fbbf24;
+    }
+    .timeline-step:nth-child(2) .step-icon {
+        border-color: #f97316;
+    }
+    .timeline-step:nth-child(3) .step-icon {
+        border-color: #8b5cf6;
+    }
+    .timeline-step:nth-child(4) .step-icon {
+        border-color: #3b82f6;
+    }
+    .timeline-step:nth-child(5) .step-icon {
+        border-color: #10b981;
+    }
+
+    .step-day {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+        background: #f3f4f6;
+        padding: 0.15rem 0.8rem;
+        border-radius: 9999px;
+        display: inline-block;
+        margin-bottom: 0.3rem;
+    }
+    .step-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0.2rem 0;
+    }
+    .step-desc {
+        font-size: 0.85rem;
+        color: #64748b;
+        line-height: 1.4;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    @media (max-width: 767px) {
+        .timeline-step {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1.2rem;
+            padding: 1rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+            width: 100%;
+        }
+        .timeline-step:last-child {
+            border-bottom: none;
+        }
+        .step-icon {
+            width: 3.2rem;
+            height: 3.2rem;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+        .step-content {
+            text-align: left;
+            flex: 1;
+        }
+        .step-desc {
+            max-width: 100%;
+            margin: 0;
+        }
+        .step-connector {
+            display: none;
+        }
+        .stats-highlight {
+            gap: 1rem 2rem;
+        }
+    }
+
+    .process-note {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-top: 2.5rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 1rem;
+        border: 1px solid #e9edf2;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
