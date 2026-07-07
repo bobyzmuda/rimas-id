@@ -1,0 +1,242 @@
+---
+// src/components/Products.astro
+const products = [
+    {
+        id: "27",
+        size: "27 m²",
+        price: "Rp79.650.000",
+        roof: "Atap Gable Roof",
+        features: [
+            "Rangka modular baja galvanis",
+            "Panel EPS insulasi grafit",
+            "Lantai PVC + lis",
+            "Sanitasi & kelistrikan siap pakai",
+        ],
+        badge: "🏠 Startegi",
+        desc: "Solusi cerdas untuk hunian kompak atau proyek perumahan massal.",
+    },
+    {
+        id: "30",
+        size: "30 m²",
+        price: "Rp88.500.000",
+        roof: "Atap Shed / Datar",
+        features: [
+            "Rangka modular baja galvanis",
+            "Panel EPS insulasi grafit",
+            "Lantai PVC + lis",
+            "Ruang lebih luas untuk keluarga",
+        ],
+        badge: "⭐ Best Value",
+        desc: "Pilihan paling seimbang antara harga dan kenyamanan.",
+    },
+    {
+        id: "36",
+        size: "36 m²",
+        price: "Rp106.200.000",
+        roof: "Atap Gable / Shed",
+        features: [
+            "Rangka modular baja galvanis",
+            "Panel EPS insulasi grafit",
+            "Lantai PVC + lis",
+            "3 Kamar Tidur atau ruang fleksibel",
+        ],
+        badge: "👨‍👩‍👧‍👦 Keluarga",
+        desc: "Pilihan ideal untuk hunian tumbuh (expandable).",
+    },
+];
+---
+
+<section class="products-section" id="produk">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">PILIHAN HUNIAN</span>
+            <h2 class="section-title">Tipe Rumah Modular RIMAS</h2>
+            <p class="section-desc">
+                Dari lahan 27m² hingga 36m², setiap jengkal ruang dioptimalkan
+                untuk kenyamanan Anda.
+            </p>
+        </div>
+
+        <div class="products-grid">
+            {
+                products.map((product) => (
+                    <div class="product-card">
+                        <div class="card-badge">{product.badge}</div>
+                        <h3 class="product-type">Tipe {product.id}</h3>
+                        <p class="product-size">{product.size}</p>
+                        <p class="product-roof">{product.roof}</p>
+                        <div class="price-tag">{product.price}</div>
+                        <ul class="product-features">
+                            {product.features.map((feature) => (
+                                <li>{feature}</li>
+                            ))}
+                        </ul>
+                        <p class="product-desc">{product.desc}</p>
+                        <a href="#kontak" class="card-cta">
+                            Tanya & Pesan →
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .products-section {
+        background: #f8fafc;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: #fef3c7;
+        color: #b45309;
+        padding: 0.3rem 1.2rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+    .section-desc {
+        color: #475569;
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .product-card {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2rem 1.8rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        position: relative;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #e9edf2;
+    }
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        border-color: #fbbf24;
+    }
+    .card-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: #0f172a;
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+    .product-type {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.2rem;
+    }
+    .product-size {
+        font-size: 0.9rem;
+        color: #64748b;
+        font-weight: 500;
+        margin-bottom: 0.4rem;
+    }
+    .product-roof {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin-bottom: 1.2rem;
+        border-bottom: 1px dashed #e2e8f0;
+        padding-bottom: 1rem;
+    }
+    .price-tag {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 1.2rem;
+    }
+    .price-tag::before {
+        content: "Mulai ";
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #64748b;
+    }
+    .product-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+        flex: 1;
+    }
+    .product-features li {
+        padding: 0.4rem 0;
+        color: #334155;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    .product-features li::before {
+        content: "✓";
+        color: #fbbf24;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    .product-desc {
+        font-size: 0.85rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+    }
+    .card-cta {
+        display: inline-block;
+        background: #0f172a;
+        color: white;
+        text-align: center;
+        padding: 0.7rem 1.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: background 0.2s;
+        margin-top: auto;
+    }
+    .card-cta:hover {
+        background: #fbbf24;
+        color: #0f172a;
+    }
+</style>

@@ -1,0 +1,203 @@
+---
+// src/components/Advantages.astro
+const advantages = [
+    {
+        icon: "🛡️",
+        title: "Material PosMAC",
+        subtitle: "5-10x Lebih Kuat dari Baja Galvanis",
+        description:
+            "Teknologi baja pelat tercanggih dengan ketahanan korosi luar biasa. Kekakuan dinding dan lantai dirancang untuk bertahan lintas generasi.",
+        color: "gold",
+    },
+    {
+        icon: "🏗️",
+        title: "Tahan Gempa 7.5 SR",
+        subtitle: "Keamanan Struktural Maksimal",
+        description:
+            "Telah lulus uji simulasi Computer-Aided Engineering (CAE) ketat. Kokoh menahan angin kencang dan guncangan gempa terkuat.",
+        color: "blue",
+    },
+    {
+        icon: "❄️",
+        title: "Insulasi Premium",
+        subtitle: "Hemat Energi hingga 70%",
+        description:
+            "Busa poliuretan premium menghasilkan ruangan stabil: adem di siang hari, kedap suara, dan tahan api. Bebas overheat dan kebocoran.",
+        color: "green",
+    },
+];
+---
+
+<section class="advantages-section" id="keunggulan">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">KEUNGGULAN RIMAS</span>
+            <h2 class="section-title">
+                Teknologi untuk <span class="highlight">Hunian Masa Depan</span>
+            </h2>
+            <p class="section-desc">
+                Dirancang dengan material canggih dan standar global untuk
+                kenyamanan lintas generasi.
+            </p>
+        </div>
+
+        <div class="advantages-grid">
+            {
+                advantages.map((item, index) => (
+                    <div class={`advantage-card ${item.color}`}>
+                        <div class="card-icon">{item.icon}</div>
+                        <h3 class="card-title">{item.title}</h3>
+                        <p class="card-subtitle">{item.subtitle}</p>
+                        <p class="card-desc">{item.description}</p>
+                        <div class="card-number">0{index + 1}</div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .advantages-section {
+        background: #0f172a;
+        padding: 5rem 1.5rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+        color: white;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .section-tag {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.15);
+        color: #fbbf24;
+        padding: 0.3rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+        border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+    }
+    .section-title .highlight {
+        color: #fbbf24;
+    }
+    .section-desc {
+        color: #94a3b8;
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .advantages-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .advantage-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+        position: relative;
+        overflow: hidden;
+        transition:
+            transform 0.3s,
+            box-shadow 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .advantage-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .advantage-card.gold:hover {
+        border-color: rgba(251, 191, 36, 0.3);
+        box-shadow: 0 20px 40px rgba(251, 191, 36, 0.1);
+    }
+    .advantage-card.blue:hover {
+        border-color: rgba(56, 189, 248, 0.3);
+        box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1);
+    }
+    .advantage-card.green:hover {
+        border-color: rgba(52, 211, 153, 0.3);
+        box-shadow: 0 20px 40px rgba(52, 211, 153, 0.1);
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        color: white;
+    }
+    .card-subtitle {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .advantage-card.gold .card-subtitle {
+        color: #fbbf24;
+    }
+    .advantage-card.blue .card-subtitle {
+        color: #38bdf8;
+    }
+    .advantage-card.green .card-subtitle {
+        color: #34d399;
+    }
+
+    .card-desc {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    .card-number {
+        position: absolute;
+        bottom: 1rem;
+        right: 1.5rem;
+        font-size: 4rem;
+        font-weight: 900;
+        opacity: 0.05;
+        color: white;
+        line-height: 1;
+    }
+
+    /* Responsive extra */
+    @media (max-width: 480px) {
+        .advantage-card {
+            padding: 1.8rem 1.5rem;
+        }
+        .card-icon {
+            font-size: 2.2rem;
+        }
+        .card-title {
+            font-size: 1.2rem;
+        }
+    }
+</style>
